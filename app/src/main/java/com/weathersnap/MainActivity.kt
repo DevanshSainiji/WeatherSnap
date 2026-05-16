@@ -20,7 +20,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherSnapTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavGraph()
+                    androidx.compose.foundation.layout.Box(modifier = Modifier.padding(innerPadding)) {
+                        NavGraph()
+                    }
                 }
             }
         }

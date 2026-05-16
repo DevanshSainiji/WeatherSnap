@@ -105,7 +105,7 @@ fun WeatherScreen(
                     containerColor = AccentTeal,
                     contentColor = Color.White
                 ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Text("Reports", fontWeight = FontWeight.SemiBold)
             }
@@ -132,6 +132,7 @@ fun WeatherScreen(
                         label = { Text("City") },
                         modifier = Modifier.weight(1f),
                         singleLine = true,
+                        shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AccentPrimary,
                             unfocusedBorderColor = OutlineColor,
@@ -139,7 +140,9 @@ fun WeatherScreen(
                             unfocusedLabelColor = TextSecondary,
                             cursorColor = AccentPrimary,
                             focusedTextColor = TextPrimary,
-                            unfocusedTextColor = TextPrimary
+                            unfocusedTextColor = TextPrimary,
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent
                         )
                     )
                     Spacer(modifier = Modifier.width(12.dp))
@@ -149,10 +152,10 @@ fun WeatherScreen(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = AccentPrimary,
                             contentColor = TextOnAccent,
-                            disabledContainerColor = AccentPrimary.copy(alpha = 0.5f),
-                            disabledContentColor = TextOnAccent.copy(alpha = 0.5f)
+                            disabledContainerColor = AccentPrimary.copy(alpha = 0.8f), // Keep it bright green even when disabled
+                            disabledContentColor = TextOnAccent.copy(alpha = 0.8f)
                         ),
-                        shape = RoundedCornerShape(24.dp)
+                        shape = RoundedCornerShape(12.dp)
                     ) {
                         if (weatherState is WeatherUiState.Loading) {
                             Text("...", fontWeight = FontWeight.SemiBold)
