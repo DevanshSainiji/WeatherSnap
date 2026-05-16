@@ -50,6 +50,9 @@ import com.weathersnap.ui.theme.TextSecondary
 import com.weathersnap.ui.weather.StatCard
 import java.io.File
 
+import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientStart
+
 @Composable
 fun CreateReportScreen(
     viewModel: ReportViewModel,
@@ -82,7 +85,11 @@ fun CreateReportScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                )
+            )
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
@@ -90,7 +97,7 @@ fun CreateReportScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(
                     Brush.horizontalGradient(
                         colors = listOf(HeaderGradientStart, HeaderGradientEnd)
@@ -101,14 +108,14 @@ fun CreateReportScreen(
             Column {
                 Text(
                     text = "Create Report",
-                    fontSize = 28.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextOnAccent
+                    color = AccentTeal
                 )
                 Text(
                     text = "Capture, compress, annotate",
-                    fontSize = 14.sp,
-                    color = TextOnAccent.copy(alpha = 0.7f)
+                    fontSize = 13.sp,
+                    color = AccentTeal.copy(alpha = 0.8f)
                 )
             }
             Button(
@@ -118,9 +125,9 @@ fun CreateReportScreen(
                     containerColor = AccentTeal,
                     contentColor = androidx.compose.ui.graphics.Color.White
                 ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
-                Text("Back", fontWeight = FontWeight.SemiBold)
+                Text("Back", color = androidx.compose.ui.graphics.Color.White, fontWeight = FontWeight.SemiBold)
             }
         }
 

@@ -43,10 +43,14 @@ import com.weathersnap.ui.theme.SurfaceDark
 import com.weathersnap.ui.theme.TextOnAccent
 import com.weathersnap.ui.theme.TextPrimary
 import com.weathersnap.ui.theme.TextSecondary
+import com.weathersnap.ui.theme.AccentTeal
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
+import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientStart
 
 @Composable
 fun SavedReportsScreen(
@@ -59,14 +63,18 @@ fun SavedReportsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                )
+            )
             .padding(16.dp)
     ) {
         // Header Card
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(
                     Brush.horizontalGradient(
                         colors = listOf(HeaderGradientStart, HeaderGradientEnd)
@@ -77,14 +85,14 @@ fun SavedReportsScreen(
             Column {
                 Text(
                     text = "Saved Reports",
-                    fontSize = 28.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextOnAccent
+                    color = AccentTeal
                 )
                 Text(
                     text = "$reportCount ${if (reportCount == 1) "report" else "reports"} stored locally",
-                    fontSize = 14.sp,
-                    color = TextOnAccent.copy(alpha = 0.7f)
+                    fontSize = 13.sp,
+                    color = AccentTeal.copy(alpha = 0.8f)
                 )
             }
             Button(
@@ -94,9 +102,9 @@ fun SavedReportsScreen(
                     containerColor = AccentTeal,
                     contentColor = Color.White
                 ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
-                Text("Back", fontWeight = FontWeight.SemiBold)
+                Text("Back", color = Color.White, fontWeight = FontWeight.SemiBold)
             }
         }
 

@@ -44,6 +44,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.weathersnap.domain.model.Weather
 import com.weathersnap.ui.theme.AccentPrimary
 import com.weathersnap.ui.theme.AccentTeal
+import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientStart
 import com.weathersnap.ui.theme.BannerGradientEnd
 import com.weathersnap.ui.theme.BannerGradientStart
 import com.weathersnap.ui.theme.CardDark
@@ -69,7 +71,11 @@ fun WeatherScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                )
+            )
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
@@ -77,7 +83,7 @@ fun WeatherScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(
                     Brush.horizontalGradient(
                         colors = listOf(HeaderGradientStart, HeaderGradientEnd)
@@ -88,14 +94,14 @@ fun WeatherScreen(
             Column {
                 Text(
                     text = "WeatherSnap",
-                    fontSize = 28.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextOnAccent
+                    color = AccentTeal
                 )
                 Text(
                     text = "Live weather reports with camera evidence",
-                    fontSize = 14.sp,
-                    color = TextOnAccent.copy(alpha = 0.7f)
+                    fontSize = 13.sp,
+                    color = AccentTeal.copy(alpha = 0.8f)
                 )
             }
             Button(
@@ -105,9 +111,9 @@ fun WeatherScreen(
                     containerColor = AccentTeal,
                     contentColor = Color.White
                 ),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
-                Text("Reports", fontWeight = FontWeight.SemiBold)
+                Text("Reports", color = Color.White, fontWeight = FontWeight.SemiBold)
             }
         }
 
@@ -117,7 +123,7 @@ fun WeatherScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(12.dp))
                 .background(SurfaceDark)
                 .padding(16.dp)
         ) {
@@ -148,14 +154,12 @@ fun WeatherScreen(
                     Spacer(modifier = Modifier.width(12.dp))
                     Button(
                         onClick = { viewModel.fetchWeather() },
-                        enabled = selectedCity != null && weatherState !is WeatherUiState.Loading,
+                        enabled = true,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = AccentPrimary,
-                            contentColor = TextOnAccent,
-                            disabledContainerColor = AccentPrimary.copy(alpha = 0.8f), // Keep it bright green even when disabled
-                            disabledContentColor = TextOnAccent.copy(alpha = 0.8f)
+                            contentColor = AccentTeal
                         ),
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(50)
                     ) {
                         if (weatherState is WeatherUiState.Loading) {
                             Text("...", fontWeight = FontWeight.SemiBold)
@@ -280,7 +284,7 @@ fun WeatherScreen(
                                 text = "Search. Capture. Save.",
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 16.sp,
-                                color = TextOnAccent
+                                color = Color.White
                             )
                         }
                         Spacer(modifier = Modifier.height(16.dp))
