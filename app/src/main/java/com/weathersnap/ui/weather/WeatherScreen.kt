@@ -45,6 +45,7 @@ import com.weathersnap.domain.model.Weather
 import com.weathersnap.ui.theme.AccentPrimary
 import com.weathersnap.ui.theme.AccentTeal
 import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientMiddle
 import com.weathersnap.ui.theme.BackgroundGradientStart
 import com.weathersnap.ui.theme.BannerGradientEnd
 import com.weathersnap.ui.theme.BannerGradientStart
@@ -53,6 +54,7 @@ import com.weathersnap.ui.theme.HeaderGradientEnd
 import com.weathersnap.ui.theme.HeaderGradientStart
 import com.weathersnap.ui.theme.OutlineColor
 import com.weathersnap.ui.theme.SurfaceDark
+import com.weathersnap.ui.theme.SurfaceVariant
 import com.weathersnap.ui.theme.TextOnAccent
 import com.weathersnap.ui.theme.TextPrimary
 import com.weathersnap.ui.theme.TextSecondary
@@ -73,7 +75,7 @@ fun WeatherScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientMiddle, BackgroundGradientEnd)
                 )
             )
             .verticalScroll(rememberScrollState())
@@ -401,15 +403,15 @@ private fun WeatherContent(
             // Temperature pill
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(AccentPrimary)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color(0xFF3F4C1A)) // Dark olive background for temperature
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 Text(
                     text = "${weather.temperature.toInt()}°C",
                     fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
-                    color = TextOnAccent
+                    fontSize = 22.sp,
+                    color = AccentPrimary // Bright green text
                 )
             }
         }
@@ -421,9 +423,24 @@ private fun WeatherContent(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            StatCard("Humidity", "${weather.humidity}%", Modifier.weight(1f))
-            StatCard("Wind", "${weather.windSpeed} m/s", Modifier.weight(1f))
-            StatCard("Pressure", "${weather.pressure.toInt()}", Modifier.weight(1f))
+            StatCard(
+                label = "Humidity",
+                value = "${weather.humidity}%",
+                valueColor = Color(0xFF4DB6AC), // Teal
+                modifier = Modifier.weight(1f)
+            )
+            StatCard(
+                label = "Wind",
+                value = "${weather.windSpeed} m/s",
+                valueColor = Color(0xFF64B5F6), // Blue
+                modifier = Modifier.weight(1f)
+            )
+            StatCard(
+                label = "Pressure",
+                value = "${weather.pressure.toInt()}",
+                valueColor = Color(0xFFFFB300), // Orange
+                modifier = Modifier.weight(1f)
+            )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -432,7 +449,9 @@ private fun WeatherContent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 4.dp),
+                .clip(RoundedCornerShape(8.dp))
+                .background(SurfaceVariant)
+                .padding(12.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
@@ -443,21 +462,22 @@ private fun WeatherContent(
             Text(
                 text = "Camera and Room DB enabled",
                 fontSize = 13.sp,
-                color = TextSecondary
+                fontWeight = FontWeight.Medium,
+                color = TextPrimary
             )
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         // Create Report button
-        OutlinedButton(
+        Button(
             onClick = onCreateReport,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
-            colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = TextPrimary
-            ),
-            border = androidx.compose.foundation.BorderStroke(1.dp, OutlineColor)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AccentPrimary,
+                contentColor = TextOnAccent
+            )
         ) {
             Text(
                 text = "Create Report",
@@ -472,12 +492,13 @@ private fun WeatherContent(
 fun StatCard(
     label: String,
     value: String,
+    valueColor: Color,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(CardDark)
+            .clip(RoundedCornerShape(8.dp))
+            .background(SurfaceVariant)
             .padding(12.dp)
     ) {
         Column {
@@ -491,7 +512,7 @@ fun StatCard(
                 text = value,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = AccentPrimary
+                color = valueColor
             )
         }
     }

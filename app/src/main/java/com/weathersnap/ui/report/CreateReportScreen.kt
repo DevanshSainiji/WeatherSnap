@@ -51,6 +51,7 @@ import com.weathersnap.ui.weather.StatCard
 import java.io.File
 
 import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientMiddle
 import com.weathersnap.ui.theme.BackgroundGradientStart
 
 @Composable
@@ -87,7 +88,7 @@ fun CreateReportScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientMiddle, BackgroundGradientEnd)
                 )
             )
             .verticalScroll(rememberScrollState())
@@ -174,9 +175,24 @@ fun CreateReportScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    StatCard("Humidity", "${humidity}%", Modifier.weight(1f))
-                    StatCard("Wind", "${windSpeed} m/s", Modifier.weight(1f))
-                    StatCard("Pressure", "${pressure.toInt()}", Modifier.weight(1f))
+                    StatCard(
+                        label = "Humidity",
+                        value = "${humidity}%",
+                        valueColor = androidx.compose.ui.graphics.Color(0xFF4DB6AC),
+                        modifier = Modifier.weight(1f)
+                    )
+                    StatCard(
+                        label = "Wind",
+                        value = "${windSpeed} m/s",
+                        valueColor = androidx.compose.ui.graphics.Color(0xFF64B5F6),
+                        modifier = Modifier.weight(1f)
+                    )
+                    StatCard(
+                        label = "Pressure",
+                        value = "${pressure.toInt()}",
+                        valueColor = androidx.compose.ui.graphics.Color(0xFFFFB300),
+                        modifier = Modifier.weight(1f)
+                    )
                 }
             }
         }

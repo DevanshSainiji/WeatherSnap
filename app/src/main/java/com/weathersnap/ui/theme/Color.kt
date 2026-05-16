@@ -9,7 +9,8 @@ val AccentTeal = Color(0xFF363C1B) // Matches WeatherSnap text and Reports butto
 
 // Background colors
 val BackgroundGradientStart = Color(0xFF2C3212)
-val BackgroundGradientEnd = Color(0xFF0F110B)
+val BackgroundGradientMiddle = Color(0xFF0D0F08) // Dark/black middle
+val BackgroundGradientEnd = Color(0xFF1A2210)   // Dark green bottom
 val BackgroundDark = Color(0xFF14160F) // Fallback solid
 val SurfaceDark = Color(0xFF313325)
 val SurfaceVariant = Color(0xFF3A3A2E)

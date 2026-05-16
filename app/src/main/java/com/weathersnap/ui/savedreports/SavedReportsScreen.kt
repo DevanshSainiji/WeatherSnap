@@ -50,6 +50,7 @@ import java.util.Date
 import java.util.Locale
 
 import com.weathersnap.ui.theme.BackgroundGradientEnd
+import com.weathersnap.ui.theme.BackgroundGradientMiddle
 import com.weathersnap.ui.theme.BackgroundGradientStart
 
 @Composable
@@ -65,7 +66,7 @@ fun SavedReportsScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    colors = listOf(BackgroundGradientStart, BackgroundGradientEnd)
+                    colors = listOf(BackgroundGradientStart, BackgroundGradientMiddle, BackgroundGradientEnd)
                 )
             )
             .padding(16.dp)
