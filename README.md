@@ -22,11 +22,28 @@ Uses [Open-Meteo](https://open-meteo.com/) — **no API key required**.
 
 ## Setup & Run
 
+### Method 1: Android Studio
+
 1. Clone the repository
 2. Open the project in **Android Studio** (Hedgehog or newer)
 3. Sync Gradle dependencies
 4. Connect a physical Android device or start an emulator (min SDK 24)
 5. Run the app (`Shift + F10` or click Run)
+
+### Method 2: Command Line (via USB)
+
+If you prefer building and installing the app directly from your terminal:
+
+1. **Prerequisites:**
+   - Ensure **JDK 17** is installed.
+   - Ensure **Android Command Line Tools / SDK** (with `adb` set up) is installed.
+   - Enable **USB Debugging** on your physical Android device and connect it to your computer via USB.
+
+2. **Run the single-line compile & install command:**
+   Run the following block in your terminal from the project's root directory:
+   ```bash
+   export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH" && export ANDROID_HOME=$HOME/Library/Android/sdk && ./gradlew assembleDebug && adb install -r app/build/outputs/apk/debug/app-debug.apk
+   ```
 
 > **Note:** Camera features require a physical device or an emulator with camera support.
 
