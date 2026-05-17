@@ -124,11 +124,11 @@ fun CreateReportScreen(
                 modifier = Modifier.align(Alignment.CenterEnd),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = AccentTeal,
-                    contentColor = androidx.compose.ui.graphics.Color.White
+                    contentColor = TextPrimary
                 ),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(50)
             ) {
-                Text("Back", color = androidx.compose.ui.graphics.Color.White, fontWeight = FontWeight.SemiBold)
+                Text("Back", color = TextPrimary, fontWeight = FontWeight.SemiBold)
             }
         }
 
@@ -165,7 +165,7 @@ fun CreateReportScreen(
                         text = "${temperature.toInt()}°C",
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp,
-                        color = TextPrimary
+                        color = AccentPrimary
                     )
                 }
 
@@ -184,7 +184,7 @@ fun CreateReportScreen(
                     )
                     StatCard(
                         label = "Wind",
-                        value = "${windSpeed} m/s",
+                        value = String.format(java.util.Locale.US, "%.2f m/s", windSpeed),
                         valueColor = androidx.compose.ui.graphics.Color(0xFF64B5F6),
                         backgroundColor = androidx.compose.ui.graphics.Color(0xFF2D3944),
                         modifier = Modifier.weight(1f)
@@ -218,8 +218,13 @@ fun CreateReportScreen(
                         .height(200.dp)
                         .clip(RoundedCornerShape(12.dp))
                         .background(
-                            if (hasImage) CardDark
-                            else AccentPrimary // Fallback color since brush cannot be easily swapped conditionally in this modifier setup without extra wrapper
+                            if (hasImage) Brush.verticalGradient(listOf(CardDark, CardDark))
+                            else Brush.verticalGradient(
+                                listOf(
+                                    androidx.compose.ui.graphics.Color(0xFF4C5D2B),
+                                    androidx.compose.ui.graphics.Color(0xFF38461A)
+                                )
+                            )
                         ),
                     contentAlignment = Alignment.Center
                 ) {
@@ -241,7 +246,7 @@ fun CreateReportScreen(
                         Text(
                             text = "Photo preview",
                             fontSize = 16.sp,
-                            color = TextOnAccent
+                            color = TextPrimary
                         )
                     }
                 }

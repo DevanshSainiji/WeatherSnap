@@ -3,7 +3,7 @@ package com.weathersnap.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Primary olive/green accents
-val AccentPrimary = Color(0xFFC8D84D)
+val AccentPrimary = Color(0xFFCBE08D) // Softer pale yellow-green
 val AccentDark = Color(0xFF8B9A2D)
 val AccentTeal = Color(0xFF363C1B) // Matches WeatherSnap text and Reports button
 
@@ -16,7 +16,7 @@ val SurfaceDark = Color(0xFF313325)
 val SurfaceVariant = Color(0xFF3A3A2E)
 
 // Text colors
-val TextPrimary = Color(0xFFFFFFFF)
+val TextPrimary = Color(0xFFE2E4D9) // Off-white
 val TextSecondary = Color(0xFF9EA390)
 val TextOnAccent = Color(0xFF212415)
 

@@ -432,7 +432,7 @@ private fun WeatherContent(
             )
             StatCard(
                 label = "Wind",
-                value = "${weather.windSpeed} m/s",
+                value = String.format(java.util.Locale.US, "%.2f m/s", weather.windSpeed),
                 valueColor = Color(0xFF64B5F6), // Blue
                 backgroundColor = Color(0xFF2D3944),
                 modifier = Modifier.weight(1f)
