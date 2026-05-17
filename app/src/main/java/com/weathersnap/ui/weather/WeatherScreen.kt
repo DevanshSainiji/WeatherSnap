@@ -427,18 +427,21 @@ private fun WeatherContent(
                 label = "Humidity",
                 value = "${weather.humidity}%",
                 valueColor = Color(0xFF4DB6AC), // Teal
+                backgroundColor = Color(0xFF2E3A39),
                 modifier = Modifier.weight(1f)
             )
             StatCard(
                 label = "Wind",
                 value = "${weather.windSpeed} m/s",
                 valueColor = Color(0xFF64B5F6), // Blue
+                backgroundColor = Color(0xFF2D3944),
                 modifier = Modifier.weight(1f)
             )
             StatCard(
                 label = "Pressure",
                 value = "${weather.pressure.toInt()}",
                 valueColor = Color(0xFFFFB300), // Orange
+                backgroundColor = Color(0xFF3E3628),
                 modifier = Modifier.weight(1f)
             )
         }
@@ -493,12 +496,13 @@ fun StatCard(
     label: String,
     value: String,
     valueColor: Color,
+    backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(SurfaceVariant)
+            .background(backgroundColor)
             .padding(12.dp)
     ) {
         Column {

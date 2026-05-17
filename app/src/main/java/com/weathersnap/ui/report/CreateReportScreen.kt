@@ -179,18 +179,21 @@ fun CreateReportScreen(
                         label = "Humidity",
                         value = "${humidity}%",
                         valueColor = androidx.compose.ui.graphics.Color(0xFF4DB6AC),
+                        backgroundColor = androidx.compose.ui.graphics.Color(0xFF2E3A39),
                         modifier = Modifier.weight(1f)
                     )
                     StatCard(
                         label = "Wind",
                         value = "${windSpeed} m/s",
                         valueColor = androidx.compose.ui.graphics.Color(0xFF64B5F6),
+                        backgroundColor = androidx.compose.ui.graphics.Color(0xFF2D3944),
                         modifier = Modifier.weight(1f)
                     )
                     StatCard(
                         label = "Pressure",
                         value = "${pressure.toInt()}",
                         valueColor = androidx.compose.ui.graphics.Color(0xFFFFB300),
+                        backgroundColor = androidx.compose.ui.graphics.Color(0xFF3E3628),
                         modifier = Modifier.weight(1f)
                     )
                 }
