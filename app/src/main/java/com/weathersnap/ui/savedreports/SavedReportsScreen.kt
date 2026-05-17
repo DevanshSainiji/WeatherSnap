@@ -101,11 +101,11 @@ fun SavedReportsScreen(
                 modifier = Modifier.align(Alignment.CenterEnd),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = AccentTeal,
-                    contentColor = Color.White
+                    contentColor = TextPrimary
                 ),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(50)
             ) {
-                Text("Back", color = Color.White, fontWeight = FontWeight.SemiBold)
+                Text("Back", color = TextPrimary, fontWeight = FontWeight.SemiBold)
             }
         }
 
@@ -167,6 +167,7 @@ private fun ReportCard(report: Report) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(SurfaceDark)
+            .padding(16.dp)
     ) {
         Column {
             // Captured image
@@ -176,11 +177,13 @@ private fun ReportCard(report: Report) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
-                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
+                    .clip(RoundedCornerShape(12.dp)),
                 contentScale = ContentScale.Crop
             )
 
-            Column(modifier = Modifier.padding(16.dp)) {
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Column {
                 // City name and temperature
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -207,15 +210,15 @@ private fun ReportCard(report: Report) {
                     }
                     Box(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(20.dp))
-                            .background(AccentPrimary)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFF3F4C1A))
                             .padding(horizontal = 14.dp, vertical = 6.dp)
                     ) {
                         Text(
                             text = "${report.temperature.toInt()}°C",
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp,
-                            color = TextOnAccent
+                            color = AccentPrimary
                         )
                     }
                 }
@@ -230,8 +233,8 @@ private fun ReportCard(report: Report) {
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(CardDark)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFF3E3628))
                             .padding(12.dp)
                     ) {
                         Column {
@@ -241,15 +244,15 @@ private fun ReportCard(report: Report) {
                                 text = "${report.originalImageSize / 1024} KB",
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = AccentPrimary
+                                color = Color(0xFFFFB300)
                             )
                         }
                     }
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(CardDark)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFF2E3A39))
                             .padding(12.dp)
                     ) {
                         Column {
@@ -259,20 +262,27 @@ private fun ReportCard(report: Report) {
                                 text = "${report.compressedImageSize / 1024} KB",
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = AccentPrimary
+                                color = Color(0xFF4DB6AC)
                             )
                         }
                     }
                 }
 
-                // Notes
+                // Notes inside a block
                 if (report.notes.isNotBlank()) {
                     Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        text = report.notes,
-                        fontSize = 14.sp,
-                        color = TextPrimary
-                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFF3A3A2E))
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            text = report.notes,
+                            fontSize = 14.sp,
+                            color = TextPrimary
+                        )
+                    }
                 }
             }
         }
