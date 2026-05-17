@@ -281,8 +281,8 @@ fun CreateReportScreen(
                         Box(
                             modifier = Modifier
                                 .weight(1f)
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(CardDark)
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(androidx.compose.ui.graphics.Color(0xFF3E3628))
                                 .padding(12.dp)
                         ) {
                             Column {
@@ -292,15 +292,15 @@ fun CreateReportScreen(
                                     text = "${draftOriginalSize / 1024} KB",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = AccentPrimary
+                                    color = androidx.compose.ui.graphics.Color(0xFFFFB300)
                                 )
                             }
                         }
                         Box(
                             modifier = Modifier
                                 .weight(1f)
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(CardDark)
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(androidx.compose.ui.graphics.Color(0xFF2E3A39))
                                 .padding(12.dp)
                         ) {
                             Column {
@@ -310,7 +310,7 @@ fun CreateReportScreen(
                                     text = "${draftCompressedSize / 1024} KB",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = AccentPrimary
+                                    color = androidx.compose.ui.graphics.Color(0xFF4DB6AC)
                                 )
                             }
                         }
